@@ -1,3 +1,4 @@
+username = undefined;
 function givemeUserName(object, callback) {
-	SendMessage(object, callback, 'Aída te amo');
+	SendMessage(object, callback, username);
 }
