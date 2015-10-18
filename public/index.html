@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <script src="TemplateData/UnityProgress.js"></script>
+    <script src="messages.js"></script>
   </head>
   <body class="template">
   <script>
@@ -24,23 +25,21 @@
 		    });
 		  }
 		}
-
-		FB.getLoginStatus(function(response) {
-		  // Check login status on load, and if the user is
-		  // already logged in, go directly to the welcome message.
-		  if (response.status == 'connected') {
-		    onLogin(response);
-		  } else {
-		    // Otherwise, show Login dialog first.
-		    FB.login(function(response) {
-		      onLogin(response);
-		    }, {scope: 'user_friends, email'});
-		  }
-		});
 	    // ADD ADDITIONAL FACEBOOK CODE HERE
 	  };
 
-
+FB.getLoginStatus(function(response) {
+      // Check login status on load, and if the user is
+      // already logged in, go directly to the welcome message.
+      if (response.status == 'connected') {
+        onLogin(response);
+      } else {
+        // Otherwise, show Login dialog first.
+        FB.login(function(response) {
+          onLogin(response);
+        }, {scope: 'user_friends, email'});
+      }
+    });
 
 	  (function(d, s, id){
 	     var js, fjs = d.getElementsByTagName(s)[0];
