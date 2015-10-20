@@ -7,14 +7,16 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "passport": "^0.3.0",
+    "passport-facebook": "^2.0.0"
   },
   "engines": {
     "node": "0.12.7"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/LaMaldicionDeMandos/wallsofhazards.git"
   },
   "keywords": [
     "node",

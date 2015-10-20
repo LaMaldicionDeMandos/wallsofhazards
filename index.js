@@ -1,9 +1,48 @@
 var express = require('express');
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
 var app = express();
-
-app.set('port', (process.env.PORT || 5000));
+var port = process.env.PORT || 5000;
+app.set('port', port);
 
 app.use(express.static(__dirname + '/public'));
+
+passport.use(new FacebookStrategy({
+    clientID: '1671252833107790',
+    clientSecret: '52e12dd38b0ceca835988927268e7e4b',
+    callbackURL: "/auth/facebook/callback",
+    enableProof: false
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log('Token: ' + accessToken);
+    console.log('should refreshToken: ' + refreshToken);
+    console.log('profile: ' + JSON.stringify(profile));
+  }
+));
+
+app.use(passport.initialize());
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook'),
+  function(req, res){
+    // The request will be redirected to Facebook for authentication, so this
+    // function will not be called.
+  });
+
+app.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', {}),
+  function(req, res) {
+    console.log('Redirecting from facebook');
+    res.redirect('/');
+  });
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 app.get('/', function(req, res) {
   	res.sendFile('index.html');
