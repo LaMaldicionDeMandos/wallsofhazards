@@ -10,7 +10,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  res.sendFile('public/index.html', {root: __dirname });
+	console.log("Post: " + JSON.stringify(req));
+	res.sendFile('public/index.html', {root: __dirname });
 });
 
 app.listen(app.get('port'), function() {
