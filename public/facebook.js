@@ -9,6 +9,8 @@
   		    FB.api('/me?fields=first_name', function(data) {
   		      var welcomeBlock = document.getElementById('fb-welcome');
   		      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
+            var prueba = document.getElementById('prueba');
+            prueba.innerHTML = value;
             username = data.first_name;
   		    });
   		  }

@@ -45,7 +45,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 app.get('/', function(req, res) {
-  	res.sendFile('index.html');
+  	res.sendFile('index.html', {val: 'hola'});
 });
 
 app.post('/', function(req, res) {
