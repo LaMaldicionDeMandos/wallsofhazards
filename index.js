@@ -1,10 +1,12 @@
 var express = require('express');
 var passport = require('passport');
+var path = require('path');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var app = express();
 var port = process.env.PORT || 5000;
 app.set('port', port);
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 
 passport.use(new FacebookStrategy({
@@ -46,11 +48,11 @@ passport.deserializeUser(function(obj, done) {
 
 app.get('/login', function(req, res) {
   console.log('login');
-  res.send('login');
+  res.sendFile('public/login.html', {root: __dirname });
 });
 
 app.get('/', function(req, res) {
-  	res.sendFile('index.html', {val: 'hola'});
+  	res.sendFile('index.html', {root: __dirname });
 });
 
 app.post('/', ensureAuthenticated, function(req, res) {
