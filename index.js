@@ -44,11 +44,16 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+app.get('/login', function(req, res) {
+  console.log('login');
+  res.send('login');
+});
+
 app.get('/', function(req, res) {
   	res.sendFile('index.html', {val: 'hola'});
 });
 
-app.post('/', function(req, res) {
+app.post('/', ensureAuthenticated, function(req, res) {
 	console.log('post from facbook: ' + JSON.stringify(req.body));
 	console.log('post from facbook: ' + JSON.stringify(req.path));
 	console.log('post from facbook: ' + JSON.stringify(req.params));
@@ -59,3 +64,8 @@ app.post('/', function(req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}
