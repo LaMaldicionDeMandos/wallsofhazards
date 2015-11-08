@@ -9,8 +9,6 @@
   		    FB.api('/me?fields=first_name', function(data) {
   		      var welcomeBlock = document.getElementById('fb-welcome');
   		      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
-            var prueba = document.getElementById('prueba');
-            prueba.innerHTML = value;
             username = data.first_name;
   		    });
   		  }
@@ -35,6 +33,6 @@
 	     var js, fjs = d.getElementsByTagName(s)[0];
 	     if (d.getElementById(id)) {return;}
 	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=1671252833107790";
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
