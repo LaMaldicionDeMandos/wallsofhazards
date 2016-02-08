@@ -6,6 +6,7 @@ function givemeUserId(object, callback) {
 	SendMessage(object, callback, user.id);
 }
 
-function passLevel(object, callback, userId, level) {
-	SendMessage(object, callback, level);
+function levelUp(object, callback, userId, level) {
+	sendPost('/levelUp', {userId: userId, level: level}, function(data) { alert('Level up con parametros');});
+	//SendMessage(object, callback, level);
 }

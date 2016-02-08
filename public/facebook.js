@@ -11,7 +11,7 @@
   		      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
             console.log(JSON.stringify(data));
             user = data;
-            sendPost();
+            levelUp(null, null, '111111', 1);
   		    });
   		  }
   		}

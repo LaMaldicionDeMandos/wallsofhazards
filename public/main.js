@@ -1,12 +1,10 @@
 var user;
 
-function sendPost() {
+function sendPost(path, data, callback) {
 	$.ajax({
 		type: 'POST',
-		data: 'ping',
-		url: '/passLevel',
-		success: function( data ) {
-			alert('Send POST OK');
-		},
+		data: data,
+		url: path,
+		success: callback
 	});		
 }

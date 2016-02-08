@@ -13,7 +13,7 @@ app.post('/', function(req, res) {
   res.sendFile('public/index.html', {root: __dirname });
 });
 
-app.post('/passLevel', function(req, res) {
+app.post('/levelUp', function(req, res) {
 	console.log('Send Ajax pass level');
 	res.send(200);
 });
