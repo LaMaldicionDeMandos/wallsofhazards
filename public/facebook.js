@@ -10,7 +10,8 @@
   		      var welcomeBlock = document.getElementById('fb-welcome');
   		      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
             console.log(JSON.stringify(data));
-            username = data.first_name;
+            user = data;
+            sendPost();
   		    });
   		  }
   		}
