@@ -20,6 +20,22 @@
 		 data-width="450"
 		 data-show-faces="true">
 		</div>
+    <script>
+      function doLevelUp() {
+        levelUp(null, function() { 
+          alert('Level Up!!'); 
+        }, ++level);
+      };
+      function doGetLevel() {
+        givemeLevel(null, function(_level) {
+          alert('Level: ' + _level); 
+          level = _level;
+        });
+      };
+    </script>
+
+    <button onclick="doLevelUp()">Level Up</button>
+    <button onclick="doGetLevel()">Get Level</button>
 <!--
     <p class="header"><span>Unity WebGL Player | </span>Walls Of Hazards</p>
     <div class="template-wrap clear">
