@@ -6,8 +6,8 @@ var UserStatsSchema = new Schema({_id: ObjectId, userId: String, scores:[{level:
 
 var UserStats = mongoose.model('UserStats', UserStatsSchema);
 
-var db = function(host, dbname) {
-	mongoose.connect('mongodb://' + host + '/' + dbname);
+var db = function(credentials) {
+	mongoose.connect(credentials);
 	var Schema = mongoose.Schema;
 	var ObjectId = Schema.ObjectId;
 	console.log('Connecting to mongodb');

@@ -9,9 +9,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var db;
-if (config.dbhost) {
+if (config.db_connection) {
 	var DB = require('./database');
-	db = new DB(config.dbhost, config.dbname);
+	db = new DB(config.db_connection);
 }
 var Service = require('./service');
 var service = new Service(db);
