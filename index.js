@@ -3,16 +3,15 @@ var fs = require('fs');
 var data = fs.readFileSync(__dirname+'/config.properties', 'UTF8');
 config = xnconfig.parse(process.env.NODE_ENV, data);
 
-console.log('Enviroment: ' + process.env.NODE_ENV);
+console.log('Scope: ' + process.env.NODE_ENV);
+console.log('DB: ' + process.env.MONGOLAB_URI);
+
 
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var db;
-if (config.db_connection) {
-	var DB = require('./database');
-	db = new DB(config.db_connection);
-}
+var DB = require('./database');
+var db = config.db_connection ? new DB(config.db_connection) : new DB(process.env.MONGOLAB_URI);
 var Service = require('./service');
 var service = new Service(db);
 
