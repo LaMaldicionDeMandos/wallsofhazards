@@ -3,6 +3,8 @@ var fs = require('fs');
 var data = fs.readFileSync(__dirname+'/config.properties', 'UTF8');
 config = xnconfig.parse(process.env.NODE_ENV, data);
 
+console.log('Enviroment: ' + process.env.NODE_ENV);
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
