@@ -9,6 +9,7 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "4.13.3",
+    "mongoose": "^4.4.3",
     "nodejsconfig": "^0.2.2"
   },
   "engines": {

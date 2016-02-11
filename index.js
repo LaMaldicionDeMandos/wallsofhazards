@@ -6,9 +6,13 @@ config = xnconfig.parse(process.env.NODE_ENV, data);
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var service = require('./service');
-
-console.log('Node env: ' + config.test)
+var db;
+if (config.dbhost) {
+	var DB = require('./database');
+	db = new DB(config.dbhost, config.dbname);
+}
+var Service = require('./service');
+var service = new Service(db);
 
 app.use(bodyParser.json()); // for parsing application/json
 
@@ -25,7 +29,7 @@ app.post('/', function(req, res) {
 });
 
 app.post('/levelUp', function(req, res) {
-	service.levelUp(req.body.userId, req.body.level);
+	service.levelUp(req.body.userId, req.body.level, 26);
 	res.sendStatus(200);
 });
 
