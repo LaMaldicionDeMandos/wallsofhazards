@@ -1,7 +1,14 @@
+var xnconfig = require('nodejsconfig');
+var fs = require('fs');
+var data = fs.readFileSync(__dirname+'/config.properties', 'UTF8');
+config = xnconfig.parse(process.env.NODE_ENV, data);
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var service = require('./service');
+
+console.log('Node env: ' + config.test)
 
 app.use(bodyParser.json()); // for parsing application/json
 
