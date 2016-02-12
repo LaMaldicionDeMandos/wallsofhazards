@@ -10,7 +10,8 @@
     "body-parser": "^1.14.2",
     "express": "4.13.3",
     "mongoose": "^4.4.3",
-    "nodejsconfig": "^0.2.2"
+    "nodejsconfig": "^0.2.2",
+    "q": "^1.4.1"
   },
   "engines": {
     "node": "0.12.7"

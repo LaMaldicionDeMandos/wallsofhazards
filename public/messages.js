@@ -2,13 +2,18 @@ function givemeUserName(object, callback) {
 	SendMessage(object, callback, user.first_name);
 }
 
-function givemeLevel(object, callback) {
-	getLevel(user.id, function(data) {
-		console.log('givemeLevel: ' + data);
-		SendMessage(object, callback, data);
+function givemeLevels(object, callback) {
+	getLevels(user.id, function(levels) {
+		console.log('givemeLevels: ' + levels);
+		SendMessage(object, callback, levels);
 	});
 }
 
-function levelUp(object, callback, level) {
-	sendLevelUp({userId: user.id, level: level});
+function newScore(object, callback, level, time) {
+	sendScore({userId: user.id, level: level, time: time}, function(isRecord) {
+		if (isRecord) {
+			console.log('New Record!!');
+		}
+		SendMessage(object, callback, level, time, isRecord);
+	});
 }

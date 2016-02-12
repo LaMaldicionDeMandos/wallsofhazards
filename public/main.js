@@ -1,19 +1,19 @@
 var user;
 var level = 0;
-function sendLevelUp(user, callback) {
+function sendScore(user) {
 	$.ajax({
 		type: 'POST',
 		data: JSON.stringify(user),
 		dataType: 'json',
 		contentType: 'application/json',
-		url: '/levelUp',
+		url: '/newScore',
 		success: callback
 	});		
 };
 
-function getLevel(userId, callback) {
+function getLevels(userId, callback) {
 	$.ajax({
-		url: '/level/' + userId,
+		url: '/levels/' + userId,
 		success: callback
 	});		
 };

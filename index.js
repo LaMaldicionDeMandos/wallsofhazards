@@ -29,14 +29,22 @@ app.post('/', function(req, res) {
   res.sendFile('public/index.html', {root: __dirname });
 });
 
-app.post('/levelUp', function(req, res) {
-	service.levelUp(req.body.userId, req.body.level, 26);
-	res.sendStatus(200);
+app.post('/newScore', function(req, res) {
+	service.newScore(req.body).then(function(isRecord) {
+		res.status(200).send(JSON.stringify(isRecord));
+	}, function(err) {
+		res.sendStatus(400);
+	});
 });
 
-app.get('/level/:userId', function(req, res) {
-	var level = service.lastLevel(req.params.userId);
-	res.status(200).send(JSON.stringify(level));
+app.get('/levels/:userId', function(req, res) {
+	service.getLevels(req.params.userId).then(
+		function(levels) {
+			res.status(200).send(JSON.stringify(levels));
+		},
+		function(err) {
+			res.sendStatus(400);
+		});
 });
 
 app.listen(app.get('port'), function() {
