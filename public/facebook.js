@@ -11,6 +11,11 @@
   		      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
             console.log(JSON.stringify(data));
             user = data;
+            FB.api("/me/friends",function (response) {
+              if (response && !response.error) {
+                console.log(JSON.stringify(response));
+              }
+            });
   		    });
   		  }
   		}
