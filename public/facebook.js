@@ -13,6 +13,7 @@
             user = data;
             FB.api("/me/friends",function (response) {
               if (response && !response.error) {
+                //Finding friends with the installed app
                 console.log(JSON.stringify(response));
               }
             });
